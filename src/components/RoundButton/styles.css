@@ -1,0 +1,18 @@
+button {
+    width: 300px;
+    height: 40px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.94rem;
+    transition: all 0.3s ease;
+}
+button img {
+    height: 60%;
+}
+button:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+}
