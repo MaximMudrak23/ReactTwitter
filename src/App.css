@@ -1,8 +1,18 @@
 #root {
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  min-height: 100vh;
+  height: 100vh;
+  /* min-height: 720px; */
+}
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
   box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: auto;
 }

@@ -1,0 +1,78 @@
+.rSection {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+}
+.rSection__pt2 {
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+}
+.rSection__pt3 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.rSection .rSection__welcome1 p,
+.rSection .rSection__welcome2 p {
+    font-weight: bold;
+}
+.rSection .rSection__welcome1 p {
+    font-size: 4rem;
+    line-height: 1.2;
+}
+.rSection .rSection__welcome2 p {
+    font-size: 2rem;
+}
+.rSection__welcome1, .rSection__welcome2 {
+    padding: 15px 0; /*One of the reasons*/
+}
+.rSection .rSection__googleButton {
+    margin: 10px 0;
+}
+.rSection .rSection__appleButton button {}
+.rSection .rSection__or::before,
+.rSection .rSection__or::after {
+    content: '';
+    width: 125px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+    min-width: 125px;
+}
+.rSection .rSection__or {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+}
+.rSection .rSection__regButton {
+    margin-bottom: 5px;
+}
+.rSection .rSection__rules p {
+    font-size: 0.75rem;
+    color: rgba(113, 118, 123, 1);
+}
+.rSection .rSection__rules span {
+    color: rgba(29, 155, 240, 1);
+    user-select: none;
+}
+.rSection .rSection__rules span:hover {
+    cursor: pointer;
+    color: rgba(29, 155, 240, 0.8);
+    text-decoration: underline;
+}
+.rSection .rSection__rules {
+    width: 400px;
+    height: auto;
+    margin-bottom: 50px; /*One of the reasons*/
+}
+.rSection .rSection__loginButton p {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.rSection .rSection__loginButton {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

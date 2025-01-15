@@ -8,6 +8,7 @@ button {
     gap: 10px;
     font-size: 0.94rem;
     transition: all 0.3s ease;
+    position: relative;
 }
 button img {
     height: 60%;
@@ -15,4 +16,21 @@ button img {
 button:hover {
     cursor: pointer;
     filter: brightness(0.8);
+}
+
+.lock {
+    position: absolute;
+    width: 300px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border-radius: 9999px;
+}
+
+.lock::after {
+    content: '🔒';
+    font-size: 1.2rem;
 }

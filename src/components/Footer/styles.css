@@ -8,6 +8,7 @@ footer {
   color: #71767B;
   user-select: none;
   padding: 10px 0;
+  min-width: 300px;
 }
 footer span:hover {
   cursor: default;
