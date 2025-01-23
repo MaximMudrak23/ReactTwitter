@@ -1,8 +1,10 @@
 import './styles.css'
 import { RoundButton } from '../RoundButton'
 import twitterLogo from '/twitter-logo.svg'
+import React, { useRef, useEffect } from 'react';
 
 export function RegistrationPopUp({closeRegPopUp}) {
+  
   return (
     <>
     <div className="backgroundPopUp">
@@ -24,18 +26,24 @@ export function RegistrationPopUp({closeRegPopUp}) {
             <p className='birth__info'>Эта информация не будет общедоступной. Подтвердите свой возраст, даже если эта учетная запись предназначена для компании, домашнего животного и т. д.</p>
           </div>
           <div className="regPopUp__main__monthSelects">
-            <select name="monthSelect" id="monthSelect">
-              <option value=""></option>
-              <option value="">она хочет еще</option>
-            </select>
-            <select name="daySelect" id="daySelect">
-              <option value=""></option>
-              <option value="">она хочет еще</option>
-            </select>
-            <select name="yearSelect" id="yearSelect">
-              <option value=""></option>
-              <option value="">она хочет еще</option>
-            </select>
+            <div className="monthSelect">
+              <label htmlFor="" className='zxc1'>Месяц</label>
+              <select name="monthSelect" id="monthSelect">
+                <option value="" disabled selected></option>
+              </select>
+            </div>
+            <div className="daySelect">
+              <label htmlFor="" className='zxc2'>День</label>
+              <select name="daySelect" id="daySelect">
+                <option value="" disabled selected></option>
+              </select>
+            </div>
+            <div className="yearSelect">
+              <label htmlFor="" className='zxc3'>Год</label>
+              <select name="yearSelect" id="yearSelect">
+                <option value="" disabled selected></option>
+              </select>
+            </div>
           </div>
         </div>
         <div className="popUp__submit">
@@ -44,6 +52,8 @@ export function RegistrationPopUp({closeRegPopUp}) {
           txt={'Зарегистрироваться'}
           txtc={'white'}
           isBold={'true'}
+          wdth='320px'
+          hght='50px'
         />
         </div>
       </div>
@@ -72,10 +82,12 @@ export function LogInPopUp({closeSignPopUp}) {
         </div>
         <div className="popUp__submit">
         <RoundButton 
-          bgc={'white'}
+          bgc={'rgba(29, 155, 240, 1)'}
           txt={'Войти'}
-          txtc={'black'}
+          txtc={'white'}
           isBold={'true'}
+          wdth='320px'
+          hght='50px'
         />
         </div>
       </div>

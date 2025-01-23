@@ -25,14 +25,14 @@ export function BackgroundPhoto() {
   return (
     <>
     <div className='backgroundPhoto'>
-        {/* <video
+        <video
           className="backgroundVideo"
           autoPlay
           loop
           muted
           playsInline
           src="/edit.mp4"
-        ></video> */}
+        ></video>
         <div className='raindrops'></div>
     </div>
     </>

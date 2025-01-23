@@ -18,11 +18,17 @@
     display: flex;
     flex-direction: column;
     padding: 0 50px;
+    overflow-x: auto;
+}
+
+.popUp__logo, .popUp__main, .popUp__submit {
+    min-width: 400px;
 }
 
 .popUp__logo {
     flex: 1;
     position: relative;
+    min-height: 68px;
 }
 .popUp__main {
     flex: 6;
@@ -32,6 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 80px;
 }
 
 .popUp__logo img {
@@ -89,7 +96,7 @@
     border-radius: 5px;
     padding: 10px;
     font-size: 1rem;
-    border: 2px solid rgb(51, 54, 57);
+    border: 1px solid rgb(51, 54, 57);
 }
 .regPopUp__main__birth {
     padding: 10px;
@@ -115,20 +122,39 @@
     justify-content: center;
 }
 .regPopUp__main__monthSelects select {
-    border: 1px solid rgb(113, 118, 123);
-    border-radius: 10px;
+    border: 1px solid rgb(39, 39, 39);
     height: 60px;
+    width: 100%;
     color: white;
     padding-left: 5px;
 }
-.regPopUp__main__monthSelects #monthSelect {
+.regPopUp__main__monthSelects .monthSelect {
     width: 38%;
 }
-.regPopUp__main__monthSelects #daySelect {
+.regPopUp__main__monthSelects .daySelect {
     width: 18%;
 }
-.regPopUp__main__monthSelects #yearSelect {
+.regPopUp__main__monthSelects .yearSelect {
     width: 30%;
+}
+
+.zxc1 {
+    position: absolute;
+    padding: 5px;
+    color: rgb(113, 118, 123);
+    font-size: 0.9rem;
+}
+.zxc2 {
+    position: absolute;
+    padding: 5px;
+    color: rgb(113, 118, 123);
+    font-size: 0.9rem;
+}
+.zxc3 {
+    position: absolute;
+    padding: 5px;
+    color: rgb(113, 118, 123);
+    font-size: 0.9rem;
 }
 
 @media (max-width: 700px) {
