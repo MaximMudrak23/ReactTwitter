@@ -1,11 +1,13 @@
 import './styles.css'
 import './rStyles.css'
 import { RoundButton } from '../RoundButton'
+import { RegistrationPopUp } from '../PopUp'
 import twitterLogo from '/twitter-logo.svg'
 import googleLogo from '/google-logo.svg'
 import appleLogo from '/apple-logo.svg'
 
-export function Main() {
+export function Main({openRegPopUp, openSignPopUp}) {
+
     return (
         <>
         <main>
@@ -22,6 +24,7 @@ export function Main() {
                             <p>Присоединяйтесь сегодня.</p>
                         </div>
                         <div className="rSection__googleButton">
+                            <div className='lock'></div>
                             <RoundButton 
                             bgc={'rgba(18, 18, 18, 1)'}
                             brc={'rgba(54, 54, 54, 1)'}
@@ -46,7 +49,7 @@ export function Main() {
                         <div className="rSection__or">
                             <p>или</p>
                         </div>
-                        <div className="rSection__regButton">
+                        <div className="rSection__regButton" onClick={openRegPopUp}>
                             <RoundButton 
                             bgc={'rgba(29, 155, 240, 1)'}
                             brc={'rgba(29, 155, 240, 1)'}
@@ -60,7 +63,7 @@ export function Main() {
                         <div className="rSection__rules">
                             <p>Регистрируясь, вы соглашаетесь с <span>Условиями <br /> предоставления услуг</span> и <span>Политикой конфиденциальности</span>, а <br /> также с <span>Политикой использования файлов cookie</span>.</p>
                         </div>
-                        <div className="rSection__loginButton">
+                        <div className="rSection__loginButton" onClick={openSignPopUp}>
                             <p>Уже зарегистрированы?</p>
                             <RoundButton 
                             bgc={'rgba(0, 0, 0, 0)'}

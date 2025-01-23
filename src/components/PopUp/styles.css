@@ -1,0 +1,141 @@
+.backgroundPopUp {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(91, 112, 131, 0.4);
+    position: absolute;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popUpContainer {
+    width: 600px;
+    height: 650px;
+    position: relative;
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+}
+
+.popUp__logo {
+    flex: 1;
+    position: relative;
+}
+.popUp__main {
+    flex: 6;
+}
+.popUp__submit {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popUp__logo img {
+    height: 80%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.popUp__logo .closeCircle {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    position: absolute;
+    top: 12px;
+    left: -30px;
+}
+.popUp__logo .closeCircle:hover {
+    cursor: pointer;
+    background-color: rgba(239, 243, 244, 0.1);
+    transition: all 1s ease;
+}
+.popUp__logo .closeCircle::before,
+.popUp__logo .closeCircle::after {
+    content: '';
+    width: 2px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+}
+.popUp__logo .closeCircle::before {
+    transform: translate(-50%,-50%) rotate(40deg);
+}
+.popUp__logo .closeCircle::after {
+    transform: translate(-50%,-50%) rotate(-40deg);
+}
+
+.regPopUp__main__welcome1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.regPopUp__main__loginInputs {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+}
+.regPopUp__main__loginInputs input {
+    height: 56px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid rgb(51, 54, 57);
+}
+.regPopUp__main__birth {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+.birth__title {
+    font-weight: bold;
+    color: white;
+    font-size: 1rem;
+}
+.birth__info {
+    font-size: 0.9rem;
+    color: rgb(113, 118, 123);
+    line-height: 1rem;
+}
+.regPopUp__main__monthSelects {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.regPopUp__main__monthSelects select {
+    border: 1px solid rgb(113, 118, 123);
+    border-radius: 10px;
+    height: 60px;
+    color: white;
+    padding-left: 5px;
+}
+.regPopUp__main__monthSelects #monthSelect {
+    width: 38%;
+}
+.regPopUp__main__monthSelects #daySelect {
+    width: 18%;
+}
+.regPopUp__main__monthSelects #yearSelect {
+    width: 30%;
+}
+
+@media (max-width: 700px) {
+    .popUpContainer {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        word-break: break-all;
+    }
+}

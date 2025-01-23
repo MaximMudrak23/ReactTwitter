@@ -9,6 +9,7 @@ footer {
   user-select: none;
   padding: 10px 0;
   min-width: 300px;
+  position: relative;
 }
 footer span:hover {
   cursor: default;
