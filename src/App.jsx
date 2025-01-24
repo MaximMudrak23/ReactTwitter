@@ -24,6 +24,7 @@ export default function App() {
     <BackgroundPhoto />
     <Main openRegPopUp={openRegPopUp} openSignPopUp={openSignPopUp} />
     <Footer />
+    {/* React Router */}
     </>
   )
 }

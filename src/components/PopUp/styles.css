@@ -97,6 +97,7 @@
     padding: 10px;
     font-size: 1rem;
     border: 1px solid rgb(51, 54, 57);
+    width: 100%;
 }
 .regPopUp__main__birth {
     padding: 10px;
@@ -126,35 +127,55 @@
     height: 60px;
     width: 100%;
     color: white;
-    padding-left: 5px;
+    font-size: 1rem;
+    padding-top: 16px;
 }
-.regPopUp__main__monthSelects .monthSelect {
+.regPopUp__main__monthSelects .monthSelectContainer {
     width: 38%;
 }
-.regPopUp__main__monthSelects .daySelect {
+.regPopUp__main__monthSelects .daySelectContainer {
     width: 18%;
 }
-.regPopUp__main__monthSelects .yearSelect {
+.regPopUp__main__monthSelects .yearSelectContainer {
     width: 30%;
 }
 
-.zxc1 {
+.monthLabel {
     position: absolute;
     padding: 5px;
     color: rgb(113, 118, 123);
     font-size: 0.9rem;
 }
-.zxc2 {
+.dayLabel {
     position: absolute;
     padding: 5px;
     color: rgb(113, 118, 123);
     font-size: 0.9rem;
 }
-.zxc3 {
+.yearLabel {
     position: absolute;
     padding: 5px;
     color: rgb(113, 118, 123);
     font-size: 0.9rem;
+}
+
+.regPasswordContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    position: relative;
+}
+.showPasswordImgContainer {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: 10px;
+}
+.showPasswordImgContainer:hover {
+    cursor: pointer;
+}
+.showPasswordImgContainer img {
+    height: 100%;
 }
 
 @media (max-width: 700px) {
