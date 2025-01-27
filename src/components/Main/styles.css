@@ -13,7 +13,7 @@ main {
 
 .lSection img {
   width: 75%;
-  height: 75%;
+  height: 600px;
   position: absolute;
   pointer-events: none;
 }

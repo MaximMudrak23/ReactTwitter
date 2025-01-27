@@ -13,7 +13,7 @@ export function RoundButton({wdth = '300px', hght = '40px', bgc, brc, txtc, txt,
             fontWeight: weightValue}}
             onClick={onClick}
         >
-            <img src={logo} alt={logoAlt} />{txt}</button>
+            {logo && <img src={logo} alt={logoAlt} />}{txt}</button>
         </>
     )
 }

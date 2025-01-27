@@ -1,0 +1,15 @@
+.option {
+    display: flex;
+    gap: 5px;
+}
+.option:hover {
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+.option img {
+    height: 30px;
+}
+.optionText {
+    padding-top: 2px;
+    font-weight: bold;
+}

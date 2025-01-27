@@ -1,0 +1,31 @@
+.profile_folders {
+    height: 50px;
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.profile_folders .container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    font-size: 0.90rem;
+}
+.profile_folders .container:hover {
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.profile_folders .container:active::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 3px;
+    background-color: #1d9bf0;
+    border-radius: 10px;
+}
