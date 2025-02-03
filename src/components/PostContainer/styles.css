@@ -1,0 +1,106 @@
+.postContainer {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid rgb(47, 51, 54);
+}
+.postContainer:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+}
+.postContainer:last-child {
+    margin-bottom: 200px;
+}
+
+.postContainer__pin {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-left: 5px;
+}
+.postContainer__pin img {
+    height: 16px;
+}
+
+.postContainer__mainInfo {
+    display: grid;
+    grid-template-columns: 80px auto;
+    grid-template-rows: 40px auto;
+    min-height: 100px;
+}
+.postContainer__mainInfo__IMG {
+    grid-column: 1 / 2;
+    grid-row: span 2;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}
+.postContainer__mainInfo__IMG img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    object-position: center 0;
+    border-radius: 50%;
+}
+.postContainer__mainInfo__name {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: center;
+    padding: 0 20px 0 5px;
+    gap: 1px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    position: relative;
+    justify-content: space-between;
+}
+.postContainer__options {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+.postContainer__options::after {
+    content: '...';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -65%);
+}
+.postContainer__options:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+.postContainer__mainInfo__name img {
+    height: 1.2rem;
+}
+.postContainer__mainInfo__text {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 5px 8px;
+}
+
+.postContainer__reactions {
+    height: 30px;
+    padding: 1px 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 12px;
+}
+.postContainer__reactions img {
+    height: 1.5rem;
+}
+.postContainer__reactions__like {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.postContainer__reactions__save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.postContainer__reactions__save img {
+    height: 1.85rem;
+}

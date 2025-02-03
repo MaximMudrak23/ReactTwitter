@@ -7,7 +7,5 @@ const docRoot = document.getElementById('root')
 const crRoot = createRoot(docRoot);
 
 crRoot.render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <App />
 )

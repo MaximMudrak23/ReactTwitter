@@ -1,24 +1,28 @@
-.profile_folders {
+.profile__folders {
     height: 50px;
     display: flex;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgb(47, 51, 54);
 }
-.profile_folders .container {
+.profile__folders .container {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     color: rgba(255, 255, 255, 0.5);
     position: relative;
-    font-size: 0.90rem;
+    font-size: 1rem;
 }
-.profile_folders .container:hover {
+.profile__folders .container:hover {
     color: white;
     cursor: pointer;
     user-select: none;
     background-color: rgba(255, 255, 255, 0.1);
 }
-.profile_folders .container:active::after {
+.profile__folders .container.active {
+    color: white;
+    font-weight: bold;
+}
+.profile__folders .container.active::after {
     content: "";
     position: absolute;
     bottom: 5px;

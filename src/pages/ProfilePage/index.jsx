@@ -1,8 +1,9 @@
+import './styles.css'
 import React, { useEffect, useState } from 'react';
 import { AsideOptions } from '../../components/AsideOptions';
 import { RoundButton } from '../../components/RoundButton';
-import { ProfileFolder } from '../../components/ProfileFolder';
-import './styles.css'
+import { CategoryFolder } from '../../components/CategoryFolder';
+import { AddPostFolder } from '../../components/AddPostFolder';
 import logo from '/twitter-logo.svg';
 import gearLogo from '/gear-icon.svg';
 import movieLogo from '/movie-icon.svg';
@@ -11,17 +12,20 @@ import checkBadge from '/check-badge.svg';
 import calendar from '/calendar.svg';
 
 export function ProfilePage() {
+  // Monitor Width
   const [monitorWidth, setMonitorWidth] = useState(screen.width);
   useEffect(() => {
     setMonitorWidth(screen.width);
   }, []);
 
+  // Browser Width
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const changeWindowWidth = () => {setWindowWidth(window.innerWidth)}
   useEffect(()=> {
     window.addEventListener('resize', changeWindowWidth);
     return () => {window.removeEventListener('resize', changeWindowWidth);}
   }, []);
+
   return (
     <>
     <div className="profilePage" style={{ maxWidth: `${monitorWidth}px` }}>
@@ -51,14 +55,12 @@ export function ProfilePage() {
             <img src={calendar} alt="Calendar" /><span>Регистрация: июнь 2009 г.</span>
           </div>
           <div className="profile_info_subs">
-            <p><span>100</span> в читаемых</p>
-            <p><span>100 млн</span> читателей</p>
+            <p><span>0</span> в читаемых</p>
+            <p><span>0</span> читателей</p>
           </div>
         </div>
-        <ProfileFolder />
-        <div className="posts">
-        </div>
-        {/* Посты тоже компоненты */}
+        <CategoryFolder />
+        <AddPostFolder />
       </main>
       <aside className='rAside'></aside>
     </div>
