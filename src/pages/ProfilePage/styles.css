@@ -95,7 +95,7 @@ header img {
     height: fit-content;
     display: flex;
     position: absolute;
-    top: 185px;
+    top: calc(185px + 60px);
     margin-left: 40px;
 }
 .profile_info_IMG img {

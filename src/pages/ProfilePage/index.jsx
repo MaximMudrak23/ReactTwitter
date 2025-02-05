@@ -4,6 +4,7 @@ import { AsideOptions } from '../../components/AsideOptions';
 import { RoundButton } from '../../components/RoundButton';
 import { CategoryFolder } from '../../components/CategoryFolder';
 import { AddPostFolder } from '../../components/AddPostFolder';
+import { FindFolder } from '../../components/FindFolder';
 import logo from '/twitter-logo.svg';
 import gearLogo from '/gear-icon.svg';
 import movieLogo from '/movie-icon.svg';
@@ -37,6 +38,7 @@ export function ProfilePage() {
         </nav>
       </aside>
       <main className='profileMain'>
+        <FindFolder />
         <header>
           <video autoPlay loop muted playsInline src="edit2.mp4"></video>
         </header>

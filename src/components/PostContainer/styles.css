@@ -16,6 +16,7 @@
     align-items: center;
     gap: 5px;
     padding-left: 5px;
+    color: rgb(129, 139, 146);
 }
 .postContainer__pin img {
     height: 16px;
@@ -25,7 +26,6 @@
     display: grid;
     grid-template-columns: 80px auto;
     grid-template-rows: 40px auto;
-    min-height: 100px;
 }
 .postContainer__mainInfo__IMG {
     grid-column: 1 / 2;
@@ -40,6 +40,7 @@
     object-fit: cover;
     object-position: center 0;
     border-radius: 50%;
+    user-select: none;
 }
 .postContainer__mainInfo__name {
     grid-column: 2 / 3;
@@ -70,6 +71,42 @@
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
 }
+.postContainer__options__container {
+    background-color: #000;
+    width: 300px;
+    height: 150px;
+    position: absolute;
+    right: 1%;
+    bottom: 0;
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.postContainer__options__container__option {
+    grid-column: span 1;
+    grid-row: span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    user-select: none;
+}
+.postContainer__options__container__option:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.postContainer__options__container__option:first-child {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.postContainer__options__container__option:last-child {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
 .postContainer__mainInfo__name img {
     height: 1.2rem;
 }
@@ -77,6 +114,7 @@
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding: 5px 8px;
+    white-space: pre-wrap;
 }
 
 .postContainer__reactions {
@@ -95,12 +133,12 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
+    user-select: none;
 }
 .postContainer__reactions__save {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.postContainer__reactions__save img {
-    height: 1.85rem;
+    gap: 3px;
+    user-select: none;
 }
