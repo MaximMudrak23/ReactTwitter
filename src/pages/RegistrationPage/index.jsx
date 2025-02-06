@@ -1,28 +1,23 @@
-import { Footer } from '../../components/Footer';
-import { Main } from '../../components/Main';
-import { BackgroundPhoto } from '../../components/BackgroundPhoto';
-import { RegistrationPopUp, LogInPopUp } from '../../components/PopUp'
 import React, {useState} from 'react';
+import { RegistrationPopUp, LogInPopUp } from '../../components/registerComponents/PopUp';
+import { BackgroundPhoto } from '../../components/registerComponents/BackgroundPhoto';
+import { Main } from '../../components/registerComponents/Main';
+import { Footer } from '../../components/registerComponents/Footer';
+
+// В поп-ап передаем функцию смены состояния, чтобы закинуть фолс, если не должно быть видно
+// {isRegVisible && (<RegistrationPopUp closeRegPopUp={setRegVisibility} />)}
+// {isSignVisible && (<LogInPopUp closeSignPopUp={setSignVisibility} />)}
 
 export function RegistrationPage() {
   const [isRegVisible,setRegVisibility] = useState(false);
-  const openRegPopUp = () => setRegVisibility(true);
-  const closeRegPopUp = () => setRegVisibility(false);
-
   const [isSignVisible,setSignVisibility] = useState(false);
-  const openSignPopUp = () => setSignVisibility(true);
-  const closeSignPopUp = () => setSignVisibility(false);
   return (
     <>
-    {isRegVisible && (
-      <RegistrationPopUp closeRegPopUp={closeRegPopUp} />
-    )}
-    {isSignVisible && (
-      <LogInPopUp closeSignPopUp={closeSignPopUp} />
-    )}
-    <BackgroundPhoto />
-    <Main openRegPopUp={openRegPopUp} openSignPopUp={openSignPopUp} />
-    <Footer />
+      {isRegVisible && (<RegistrationPopUp setRegVisibility={setRegVisibility} />)}
+      {isSignVisible && ( <LogInPopUp setSignVisibility={setSignVisibility} />)}
+      <BackgroundPhoto />
+      <Main setRegVisibility={setRegVisibility} setSignVisibility={setSignVisibility} />
+      <Footer />
     </>
   )
 }

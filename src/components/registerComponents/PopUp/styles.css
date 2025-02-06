@@ -21,11 +21,11 @@
     overflow-x: auto;
 }
 
-.popUp__logo, .popUp__main, .popUp__submit {
+.popUp__header, .popUp__main, .popUp__footer {
     min-width: 400px;
 }
 
-.popUp__logo {
+.popUp__header {
     flex: 1;
     position: relative;
     min-height: 68px;
@@ -33,7 +33,7 @@
 .popUp__main {
     flex: 6;
 }
-.popUp__submit {
+.popUp__footer {
     flex: 2;
     display: flex;
     align-items: center;
@@ -41,28 +41,30 @@
     min-height: 80px;
 }
 
-.popUp__logo img {
+.popUp__header img {
     height: 80%;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
 }
-.popUp__logo .closeCircle {
+.popUp__header .closeCircle {
     width: 40px;
     height: 40px;
     border-radius: 9999px;
     position: absolute;
     top: 12px;
     left: -30px;
+    background-color: #000;
+    transition: all 0.5s ease;
 }
-.popUp__logo .closeCircle:hover {
+.popUp__header .closeCircle:hover {
     cursor: pointer;
-    background-color: rgba(239, 243, 244, 0.1);
-    transition: all 1s ease;
+    background-color: rgba(239, 243, 244, 0.2);
+    transition: all 0.5s ease;
 }
-.popUp__logo .closeCircle::before,
-.popUp__logo .closeCircle::after {
+.popUp__header .closeCircle::before,
+.popUp__header .closeCircle::after {
     content: '';
     width: 2px;
     height: 18px;
@@ -71,10 +73,10 @@
     left: 50%;
     background-color: white;
 }
-.popUp__logo .closeCircle::before {
+.popUp__header .closeCircle::before {
     transform: translate(-50%,-50%) rotate(40deg);
 }
-.popUp__logo .closeCircle::after {
+.popUp__header .closeCircle::after {
     transform: translate(-50%,-50%) rotate(-40deg);
 }
 
@@ -140,23 +142,12 @@
     width: 30%;
 }
 
-.monthLabel {
+.monthLabel, .dayLabel, .yearLabel {
     position: absolute;
     padding: 5px;
     color: rgb(113, 118, 123);
     font-size: 0.9rem;
-}
-.dayLabel {
-    position: absolute;
-    padding: 5px;
-    color: rgb(113, 118, 123);
-    font-size: 0.9rem;
-}
-.yearLabel {
-    position: absolute;
-    padding: 5px;
-    color: rgb(113, 118, 123);
-    font-size: 0.9rem;
+    user-select: none;
 }
 
 .regPasswordContainer {

@@ -1,13 +1,12 @@
 import './styles.css'
 import './rStyles.css'
-import { RoundButton } from '../RoundButton'
+import { RoundButton } from '../../RoundButton'
 import twitterLogo from '/twitter-logo.svg'
 import googleLogo from '/google-logo.svg'
 import appleLogo from '/apple-logo.svg'
 
-export function Main({openRegPopUp, openSignPopUp}) {
+export function Main({setRegVisibility, setSignVisibility}) {
     return (
-        <>
         <main>
             <section className='lSection'>
                 <img src={twitterLogo} alt="Twitter Logo" draggable='false' />
@@ -16,7 +15,7 @@ export function Main({openRegPopUp, openSignPopUp}) {
                 <div className="rSection__pt2">
                     <div className="rSection__pt3">
                         <div className="rSection__welcome1">
-                        <p>В курсе <br /> происходящего</p>
+                        <p>В курсе <br/> происходящего</p>
                         </div>
                         <div className="rSection__welcome2">
                             <p>Присоединяйтесь сегодня.</p>
@@ -56,7 +55,7 @@ export function Main({openRegPopUp, openSignPopUp}) {
                             logo={''}
                             logoAlt={''}
                             isBold={'true'}
-                            onClick={openRegPopUp}
+                            onClick={()=>{setRegVisibility(true)}}
                             />
                         </div>
                         <div className="rSection__rules">
@@ -72,13 +71,12 @@ export function Main({openRegPopUp, openSignPopUp}) {
                             logo={''}
                             logoAlt={''}
                             isBold={'true'}
-                            onClick={openSignPopUp}
+                            onClick={()=>{setSignVisibility(true)}}
                             />
                         </div>
                     </div>
                 </div>
             </section>
         </main>
-        </>
     )
 }
