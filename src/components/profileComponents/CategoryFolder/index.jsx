@@ -1,18 +1,14 @@
 import './styles.css'
-import React, {useState} from 'react'
 
-export function CategoryFolder() {
-  const [activeFolder,setActiveFolder] = useState('Посты');
-  const foldersName = ['Посты','Избранное','Нравится','Фильмы'];
-
+export function CategoryFolder({allFolders, activeFolder, setActiveFolder}) {
   return (
     <div className="profile__folders">
-      {foldersName.map((el,index) => (
+      {allFolders.map((folder,index) => (
         <div
         key={index}
-        className={`container ${activeFolder === el ? 'active' : ''}`}
-        onClick={()=>setActiveFolder(el)}
-        >{el}</div>
+        className={`container ${activeFolder === folder ? 'active' : ''}`}
+        onClick={()=>setActiveFolder(folder)}
+        >{folder}</div>
       ))}
     </div>
   )

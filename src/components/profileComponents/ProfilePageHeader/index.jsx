@@ -1,9 +1,9 @@
 import './styles.css'
 
-export function ProfilePageHeader() {
+export function ProfilePageHeader(headerVideoSrc) {
     return (
       <header>
-        <video autoPlay loop muted playsInline src="edit2.mp4"></video>
+        <video autoPlay loop muted playsInline src={headerVideoSrc}></video>
       </header>
     )
 }

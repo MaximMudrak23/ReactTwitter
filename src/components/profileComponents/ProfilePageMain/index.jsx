@@ -2,8 +2,7 @@ import './styles.css'
 import { FindFolder } from '../FindFolder';
 import { ProfilePageHeader } from '../ProfilePageHeader';
 import { ProfilePageInfo } from '../profilePageInfo';
-import { CategoryFolder } from '../CategoryFolder';
-import { AddPostFolder } from '../AddPostFolder';
+import { CategoryAndAddPost } from '../CategoryAndAddPost';
 
 export function ProfilePageMain() {
     return (
@@ -11,8 +10,7 @@ export function ProfilePageMain() {
             <FindFolder />
             <ProfilePageHeader />
             <ProfilePageInfo />
-            <CategoryFolder />
-            <AddPostFolder />
+            <CategoryAndAddPost />
         </main>
     )
 }
