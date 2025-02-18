@@ -4,8 +4,26 @@ import { RoundButton } from '../../RoundButton'
 import twitterLogo from '/twitter-logo.svg'
 import openEye from '/eye-open.svg';
 import closedEye from '/eye-closed.svg';
-import { getDataInfo } from './DataInfo';
-import { handleSubmit } from './submitButton';
+import {registerSubmit, loginSubmit} from '../../../../API/authRequests'
+
+function getDaysInMonth(year, month){
+  if (!year || !month) return [];
+  return Array.from({ length: new Date(year, month, 0).getDate() }, (_, index) => index + 1);
+}
+
+export function getDataInfo(option,info) {
+  switch (option) {
+    case 'month':
+      return ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+    case 'day':
+      return getDaysInMonth(info[0],info[1]);
+    case 'year':
+      return {currentYear: new Date().getFullYear(), years: Array.from({ length: 100 }, (_, index) => new Date().getFullYear() - index)}
+    default:
+      alert('Такого значения не существует!')
+      break;
+  }
+}
 
 export function RegistrationPopUp({setRegVisibility}) {
   // Data
@@ -18,12 +36,6 @@ export function RegistrationPopUp({setRegVisibility}) {
   const monthArr = getDataInfo('month');
   const yearObj = getDataInfo('year');
   const days = getDataInfo('day',[selectedYear,selectedMonth]);
-  // Other (Нужно для того, чтобы не было бага, когда нужно было именно выбрать 1)
-  useEffect(()=>{
-    if (selectedMonth !== '' && selectedDay !== '' && selectedYear !== '') {
-      setSelectedDay(1);
-    };
-  },[selectedMonth,selectedDay,selectedYear]);
   // ShowPassword
   const [isPasswordHidden,setIsPasswordHidden] = useState(false);
   const togglePasswordVisibility = () => {
@@ -91,7 +103,7 @@ export function RegistrationPopUp({setRegVisibility}) {
             isBold={'true'}
             wdth='320px'
             hght='50px'
-            onClick={()=>{handleSubmit(name,password,selectedMonth,selectedDay,selectedYear)}}
+            onClick={()=>{registerSubmit(name,password,selectedMonth,selectedDay,selectedYear)}}
           />
         </div>
 
@@ -145,7 +157,7 @@ export function LogInPopUp({setSignVisibility}) {
             isBold={'true'}
             wdth='320px'
             hght='50px'
-            onClick={()=>{handleSubmit(name,password)}}
+            onClick={()=>{loginSubmit(name,password)}}
           />
         </div>
 
