@@ -1,5 +1,6 @@
 import './styles.css'
 import { useEffect } from 'react';
+import backgroundPhoto from '/backgroundPhoto.jpg';
 
 export function BackgroundPhoto() {
     useEffect(() => {
@@ -18,6 +19,7 @@ export function BackgroundPhoto() {
     }, []);
   return (
     <div className='backgroundPhoto'>
+      <img src={backgroundPhoto} alt="Background Photo" />
         {/* <video
           className="backgroundVideo"
           autoPlay
