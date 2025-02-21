@@ -24,7 +24,8 @@ export async function registerSubmit(name, password, selMonth, selDay, selYear) 
     const data = await response.json();
 
     if (response.ok) {
-      window.location.href = `/profile/${name}`;
+      localStorage.setItem('username', data.username);
+      window.location.href = `/profile/${data.username}`;
     } else {
       alert(`Ошибка регистрации: ${data.message || 'Неизвестная ошибка'}`);
     }
@@ -50,7 +51,8 @@ export async function loginSubmit(name, password) {
     const data = await response.json();
 
     if (response.ok) {
-      window.location.href = `/profile/${name}`;
+      localStorage.setItem('username', data.username);
+      window.location.href = `/profile/${data.username}`;
     } else {
       alert(`Ошибка входа: ${data.message || 'Неверные данные'}`);
     }

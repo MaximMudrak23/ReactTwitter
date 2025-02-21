@@ -3,24 +3,23 @@ import { CategoryFolder } from '../CategoryFolder'
 import { AddPostFolder } from '../AddPostFolder'
 import { PostsContainer } from '../PostsContainer'
 
-export function CategoryAndAddPost() {
+// function AddNewPostFunc(newPostTxt) {
+//   if (newPostTxt.trim() === '') return;
+//   const newPost = {
+//       author: null,
+//       text: newPostTxt,
+//       category: 'Посты',
+//       likes: 0,
+//       saves: 0,
+//   }
+
+//   setAllPosts((pastPosts)=> [newPost, ...pastPosts]);
+// }
+
+export function CategoryAndAddPost({ isOwner }) {
     const [allPosts, setAllPosts] = useState([]);
     const [activeFolder, setActiveFolder] = useState('Посты');
-    const allFolders = ['Посты','Избранное','Нравится','Фильмы'];
-
-    function AddNewPostFunc(newPostTxt) {
-        if (newPostTxt.trim() === '') return;
-        const newPost = {
-            author: null,
-            text: newPostTxt,
-            category: 'Посты',
-            likes: 0,
-            saves: 0,
-        }
-
-        setAllPosts((pastPosts)=> [newPost, ...pastPosts]);
-    }
-    // console.log(allPosts);
+    const allFolders = ['Посты','Избранное','Нравится'];
 
   return (
     <>
@@ -29,7 +28,7 @@ export function CategoryAndAddPost() {
         activeFolder={activeFolder}
         setActiveFolder={setActiveFolder}
       />
-      <AddPostFolder AddNewPostFunc={AddNewPostFunc} />
+      {isOwner && <AddPostFolder AddNewPostFunc={AddNewPostFunc} />}
       <PostsContainer allPosts={allPosts} activeFolder={activeFolder} />
     </>
   )

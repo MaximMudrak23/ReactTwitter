@@ -32,6 +32,8 @@ export function RegistrationPopUp({setRegVisibility}) {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedDay, setSelectedDay] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
+  // Other
+  if (selectedDay === '') setSelectedDay(1);
   // Date Logic
   const monthArr = getDataInfo('month');
   const yearObj = getDataInfo('year');
