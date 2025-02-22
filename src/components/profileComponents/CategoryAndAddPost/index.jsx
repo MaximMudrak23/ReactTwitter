@@ -28,7 +28,7 @@ export function CategoryAndAddPost({ isOwner }) {
         activeFolder={activeFolder}
         setActiveFolder={setActiveFolder}
       />
-      {isOwner && <AddPostFolder AddNewPostFunc={AddNewPostFunc} />}
+      {isOwner && <AddPostFolder />}
       <PostsContainer allPosts={allPosts} activeFolder={activeFolder} />
     </>
   )

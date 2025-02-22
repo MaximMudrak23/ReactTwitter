@@ -6,14 +6,14 @@ import { CategoryAndAddPost } from '../CategoryAndAddPost';
 import { loadUserData } from '../../../../API/loadUserData'
 
 export function ProfilePageMain() {
-    const {userInfo, isOwner} = loadUserData();
+    const {userInfo, isOwner, setUser} = loadUserData();
     if(!userInfo) return null;
 
     return (
         <main className='profileMain'>
             <FindFolder />
             <ProfilePageHeader userInfo={userInfo} />
-            <ProfilePageInfo userInfo={userInfo} isOwner={isOwner} />
+            <ProfilePageInfo userInfo={userInfo} isOwner={isOwner} setUser={setUser} />
             <CategoryAndAddPost isOwner={isOwner} />
         </main>
     )

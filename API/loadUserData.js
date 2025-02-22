@@ -17,5 +17,5 @@ export function loadUserData() {
     }, [username]);
 
     const isOwner = localStorage.getItem('username') === username;
-    return {userInfo: user, isOwner};
+    return {userInfo: user, isOwner, setUser};
 }

@@ -13,7 +13,7 @@ export function AddPostFolder({AddNewPostFunc}) {
           <textarea placeholder="Введите текст..." ref={textAreaRef} value={text} onChange={(e)=>{setText(e.target.value)}} spellCheck='false' />
         </div>
         <div className="actions_folder"> {/* Add Post Button */}
-          <div className="actions_folder_action"><img src={sendLogo} alt="Send Icon" onClick={()=>{AddNewPostFunc(text); setText('')}}/></div>
+          <div className="actions_folder_action"><img src={sendLogo} alt="Send Icon" onClick={()=>{setText('')}}/></div>
         </div>
       </div>
   )
