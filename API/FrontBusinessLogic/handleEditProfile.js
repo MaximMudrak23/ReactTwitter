@@ -1,4 +1,3 @@
-export async function handleEditProfile() {
-    alert('zxc');
-    return;
+export function handleEditProfile(username, navigate) {
+    navigate(`/editprofile/${username}`);
 }

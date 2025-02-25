@@ -4,7 +4,7 @@ export async function handleFindFolder(targetUser) {
     try {
         const response = await fetch(`http://localhost:3000/api/user/${targetUser}`);
         if(response.ok) {
-            window.location.href = `${targetUser}`;
+            window.location.href = `/profile/${targetUser}`
         } else {
             alert('Пользователь не найден!');
         }

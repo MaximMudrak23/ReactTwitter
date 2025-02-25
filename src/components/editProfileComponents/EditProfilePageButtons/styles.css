@@ -1,0 +1,10 @@
+.profileMain__edit__buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 8% 15%;
+}
+
+.delete {
+    justify-content: space-around;
+    padding: 0 15%;
+}
