@@ -14,7 +14,7 @@ export function ProfilePageMain() {
             <FindFolder />
             <ProfilePageHeader userInfo={userInfo} />
             <ProfilePageInfo userInfo={userInfo} isOwner={isOwner} setUser={setUser} />
-            <CategoryAndAddPost isOwner={isOwner} />
+            <CategoryAndAddPost userInfo={userInfo} isOwner={isOwner} setUser={setUser} />
         </main>
     )
 }

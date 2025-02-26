@@ -1,13 +1,28 @@
 import './styles.css'
 import { Post } from '../Post';
+import { act } from 'react';
 
-export function PostsContainer({allPosts, activeFolder}) {
-  const filteredPosts = allPosts.filter(post => post.category === activeFolder);
+export function PostsContainer({ userInfo, isOwner, setCurrentPosts, currentPosts, activeFolder}) {
+  const allTargetPosts = currentPosts[activeFolder.value] || [];
+  const pinnedPosts = allTargetPosts
+    .filter(post => post.isPinned)
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const regularPosts = allTargetPosts
+    .filter(post => !post.isPinned)
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   return (
     <div className="postsContainer">
-      {
-        filteredPosts.length === 0 ? <p>В этой категории нет постов</p> : filteredPosts.map((post, index) => (<Post key={index} postObj={post} />))
-      }
+      {allTargetPosts.length === 0 ? <p>В этой категории нет постов</p> : 
+        [...pinnedPosts, ...regularPosts].map(post =>
+        <Post
+          key={post.id}
+          postInfo={post}
+          userInfo={userInfo}
+          isOwner={isOwner}
+          activeFolder={activeFolder}
+          setCurrentPosts={setCurrentPosts}
+        />)}
     </div>
   );
 }

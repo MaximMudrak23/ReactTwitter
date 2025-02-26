@@ -6,9 +6,9 @@ export function CategoryFolder({allFolders, activeFolder, setActiveFolder}) {
       {allFolders.map((folder,index) => (
         <div
         key={index}
-        className={`container ${activeFolder === folder ? 'active' : ''}`}
+        className={`container ${activeFolder.name === folder.name ? 'active' : ''}`}
         onClick={()=>setActiveFolder(folder)}
-        >{folder}</div>
+        >{folder.name}</div>
       ))}
     </div>
   )

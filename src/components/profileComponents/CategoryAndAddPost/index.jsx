@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CategoryFolder } from '../CategoryFolder'
 import { AddPostFolder } from '../AddPostFolder'
 import { PostsContainer } from '../PostsContainer'
+import { loadPostData } from '../../../../API/postRequests';
 
-// function AddNewPostFunc(newPostTxt) {
-//   if (newPostTxt.trim() === '') return;
-//   const newPost = {
-//       author: null,
-//       text: newPostTxt,
-//       category: 'Посты',
-//       likes: 0,
-//       saves: 0,
-//   }
+export function CategoryAndAddPost({ userInfo, isOwner, setUser }) {
+  const [currentPosts, setCurrentPosts] = useState({ pinned: [], created: [], liked: [], saved: [] });
+  const [activeFolder, setActiveFolder] = useState({name: 'Посты', value: 'created'});
+  const allFolders = [{name: 'Посты', value: 'created'},{name: 'Избранное', value: 'saved'},{name: 'Нравится', value: 'liked'}];
 
-//   setAllPosts((pastPosts)=> [newPost, ...pastPosts]);
-// }
-
-export function CategoryAndAddPost({ isOwner }) {
-    const [allPosts, setAllPosts] = useState([]);
-    const [activeFolder, setActiveFolder] = useState('Посты');
-    const allFolders = ['Посты','Избранное','Нравится'];
+  useEffect(() => {
+    loadPostData(userInfo.username, setCurrentPosts);
+  }, [userInfo.username]);
 
   return (
     <>
@@ -28,8 +20,19 @@ export function CategoryAndAddPost({ isOwner }) {
         activeFolder={activeFolder}
         setActiveFolder={setActiveFolder}
       />
-      {isOwner && <AddPostFolder />}
-      <PostsContainer allPosts={allPosts} activeFolder={activeFolder} />
+      {isOwner &&
+      <AddPostFolder
+        userInfo={userInfo}
+        setUser={setUser}
+        setCurrentPosts={setCurrentPosts}
+      />}
+      <PostsContainer
+        userInfo={userInfo}
+        isOwner={isOwner}
+        currentPosts={currentPosts}
+        setCurrentPosts= {setCurrentPosts}
+        activeFolder={activeFolder}
+      />
     </>
   )
 }

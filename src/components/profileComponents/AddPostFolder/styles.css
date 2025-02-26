@@ -28,6 +28,7 @@
 }
 
 .actions_folder {
+    height: 100%;
     grid-column: 2 / 3;
     grid-row: 1 / 3;
     display: flex;
@@ -35,7 +36,6 @@
     gap: 3px;
     padding: 8px;
     flex-wrap: wrap;
-    height: 10px;
 }
 .actions_folder_action {
     width: 24px;
