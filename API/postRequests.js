@@ -25,20 +25,25 @@ export async function addPost(text, username, setUser, setCurrentPosts) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text, username, id: postID })
         });
-        
+
         if (!response.ok) {
             throw new Error(`Ошибка при добавлении поста: ${response.status}`);
         }
 
         const newPost = await response.json();
+        
+        const userResponse = await fetch(`http://localhost:3000/api/post/getPost/${username}`);
+        if (!userResponse.ok) {
+            throw new Error(`Ошибка загрузки постов: ${userResponse.status}`);
+        }
+        const updatedUserPosts = await userResponse.json();
+
         setUser(prev => ({
             ...prev,
-            posts: {...prev.posts,created: [newPost.id, ...prev.posts.created]}
+            posts: { ...prev.posts, created: [newPost.id, ...prev.posts.created] }
         }));
-        setCurrentPosts(prev => ({
-            ...prev,
-            created: [newPost, ...prev.created]
-        }));        
+
+        setCurrentPosts(updatedUserPosts);
     } catch (error) {
         console.error('Ошибка при добавлении поста!', error);
     }
