@@ -5,9 +5,13 @@ import { PostsContainer } from '../PostsContainer'
 import { loadPostData } from '../../../../API/postRequests';
 
 export function CategoryAndAddPost({ userInfo, isOwner, setUser }) {
-  const [currentPosts, setCurrentPosts] = useState({ pinned: [], created: [], liked: [], saved: [] });
+  const [currentPosts, setCurrentPosts] = useState({ created: [], liked: [], saved: [] });
   const [activeFolder, setActiveFolder] = useState({name: 'Посты', value: 'created'});
-  const allFolders = [{name: 'Посты', value: 'created'},{name: 'Избранное', value: 'saved'},{name: 'Нравится', value: 'liked'}];
+  const allFolders = [
+    {name: 'Посты', value: 'created'},
+    {name: 'Избранное', value: 'saved'},
+    {name: 'Нравится', value: 'liked'}
+  ];
 
   useEffect(() => {
     loadPostData(userInfo.username, setCurrentPosts);
@@ -27,7 +31,6 @@ export function CategoryAndAddPost({ userInfo, isOwner, setUser }) {
         setCurrentPosts={setCurrentPosts}
       />}
       <PostsContainer
-        userInfo={userInfo}
         isOwner={isOwner}
         currentPosts={currentPosts}
         setCurrentPosts= {setCurrentPosts}

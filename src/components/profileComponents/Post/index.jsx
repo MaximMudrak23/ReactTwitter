@@ -14,7 +14,7 @@ import saveLogoFilled from '/saveFilled.svg'
 import editLogo from '/edit.svg'
 import deleteLogo from '/delete.svg'
 
-export function Post({ userInfo, postInfo, isOwner, activeFolder, setCurrentPosts }) {
+export function Post({ postInfo, isOwner, activeFolder, setCurrentPosts }) {
     const [isOptionVisible,setIsOptionVisible] = useState(false);
     const optionsContainerRef = useRef(null);
     useEffect(() => {
@@ -28,21 +28,24 @@ export function Post({ userInfo, postInfo, isOwner, activeFolder, setCurrentPost
         };
         return () => document.removeEventListener('mousedown', handleOutsideClick);
     }, [isOptionVisible]);
-
+    
     return (
     <>
     <div className="postContainer">
         {postInfo.isPinned && activeFolder.value === 'created' && <div className="postContainer__pin"><img src={pinIcon} alt="Pin" /><span>Закреплено</span></div>}
+        
         <div className="postContainer__mainInfo">
             <div className="postContainer__mainInfo__IMG">
                 <img src={postInfo.author.avatar === undefined ? defaultUser : postInfo.author.avatar } alt="Profile Picture" />
             </div>
+            
             <div className="postContainer__mainInfo__name">
                 <div className="postContainer__name">
                     <span>{postInfo.author.fullname === undefined || postInfo.author.fullname === '' ? 'null' : postInfo.author.fullname}</span>
                     {postInfo.author.isUserConfirmed ? <img src={checkBadge} alt="Check Badge" /> : null}
                     {postInfo.author.isUserTwitterCreator ? <img src={logo} alt="Twitter Logo" /> : null}
                 </div>
+                
                 {isOwner && activeFolder.value === 'created' &&<div className="postContainer__options" onClick={() => setIsOptionVisible(!isOptionVisible)}></div>}
                 {isOptionVisible && <div className="postContainer__options__container" ref={optionsContainerRef}>
                     <div className="postContainer__options__container__option" onClick={()=>pinPost(postInfo.id, postInfo.isPinned, setCurrentPosts)}>
@@ -56,19 +59,22 @@ export function Post({ userInfo, postInfo, isOwner, activeFolder, setCurrentPost
                     </div>
                 </div>}
             </div>
+
             <div className="postContainer__mainInfo__text">{postInfo.text}</div>
         </div>
+        
         <div className="postContainer__reactions">
-        <div className="postContainer__reactions__save" 
-            onClick={() => toggleSave(postInfo.id, setCurrentPosts)}>
-            <img src={postInfo.saves.includes(localStorage.getItem('username')) ? saveLogoFilled : saveLogo} alt="Save" />
-            {postInfo.saves.length}
-        </div>
-        <div className="postContainer__reactions__like" 
-            onClick={() => toggleLike(postInfo.id, setCurrentPosts)}>
-            <img src={postInfo.likes.includes(localStorage.getItem('username')) ? likeLogoFilled : likeLogo} alt="Like" />
-            {postInfo.likes.length}
-        </div>
+            <div className="postContainer__reactions__save" 
+                onClick={() => toggleSave(postInfo.id, setCurrentPosts, isOwner)}>
+                <img src={postInfo.saves.includes(localStorage.getItem('username')) ? saveLogoFilled : saveLogo} alt="Save" />
+                {postInfo.saves.length}
+            </div>
+
+            <div className="postContainer__reactions__like" 
+                onClick={() => toggleLike(postInfo.id, setCurrentPosts, isOwner)}>
+                <img src={postInfo.likes.includes(localStorage.getItem('username')) ? likeLogoFilled : likeLogo} alt="Like" />
+                {postInfo.likes.length}
+            </div>
         </div>
     </div>
     </>

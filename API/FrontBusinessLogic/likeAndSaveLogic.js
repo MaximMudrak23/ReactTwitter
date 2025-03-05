@@ -1,4 +1,4 @@
-export async function toggleLike(postId, setCurrentPosts) {
+export async function toggleLike(postID, setCurrentPosts, isOwner) {
     try {
         const username = localStorage.getItem('username');
         if (!username) {
@@ -6,7 +6,7 @@ export async function toggleLike(postId, setCurrentPosts) {
             return;
         }
 
-        const response = await fetch(`http://localhost:3000/api/post/toggleLike/${postId}`, {
+        const response = await fetch(`http://localhost:3000/api/post/toggleLike/${postID}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username })
@@ -18,16 +18,15 @@ export async function toggleLike(postId, setCurrentPosts) {
 
         const updatedPost = await response.json();
 
-        setCurrentPosts(prev => {
-            const isLikedByCurrentUser = updatedPost.likes.includes(username);
+        const authorResponse = await fetch(`http://localhost:3000/api/user/${updatedPost.author}`);
+        const authorData = authorResponse.ok ? await authorResponse.json() : { username: updatedPost.author };
 
-            const existingPost = prev.created.find(post => post.id === updatedPost.id) 
-            || prev.pinned.find(post => post.id === updatedPost.id)
-            || prev.liked.find(post => post.id === updatedPost.id);
+        setCurrentPosts(prev => {
+            const isLikedByUs = updatedPost.likes.includes(username);
 
             const fullUpdatedPost = {
                 ...updatedPost,
-                author: existingPost ? existingPost.author : updatedPost.author
+                author: authorData
             };
 
             return {
@@ -35,12 +34,11 @@ export async function toggleLike(postId, setCurrentPosts) {
                 created: prev.created.map(post =>
                     post.id === updatedPost.id ? fullUpdatedPost : post
                 ),
-                pinned: prev.pinned.map(post =>
-                    post.id === updatedPost.id ? fullUpdatedPost : post
-                ),
-                liked: isLikedByCurrentUser
-                    ? [...prev.liked, fullUpdatedPost]
-                    : prev.liked.filter(post => post.id !== updatedPost.id)
+                liked: isLikedByUs && isOwner
+                    ? [fullUpdatedPost, ...prev.liked]
+                    : prev.liked.filter(post => post.id !== updatedPost.id),
+                saved: prev.saved.map(post =>
+                    post.id === updatedPost.id ? fullUpdatedPost : post)
             };
         });
 
@@ -49,22 +47,18 @@ export async function toggleLike(postId, setCurrentPosts) {
     }
 }
 
-export async function toggleSave(postId, setCurrentPosts) {
-    console.log("Нажата кнопка сохранения поста:", postId);
-
+export async function toggleSave(postId, setCurrentPosts, isOwner) {
     try {
-        const currentUsername = localStorage.getItem("username");
-        if (!currentUsername) {
-            console.error("Ошибка: имя пользователя не найдено в localStorage");
+        const username = localStorage.getItem("username");
+        if (!username) {
+            alert('Сперва войдите в аккаунт!');
             return;
         }
 
-        const response = await fetch(
-            `http://localhost:3000/api/post/toggleSave/${postId}`,
-            {
+        const response = await fetch(`http://localhost:3000/api/post/toggleSave/${postId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username: currentUsername }),
+                body: JSON.stringify({ username }),
             }
         );
 
@@ -74,27 +68,28 @@ export async function toggleSave(postId, setCurrentPosts) {
 
         const updatedPost = await response.json();
 
-        setCurrentPosts((prev) => {
-            const existingPost =
-                prev.created.find((post) => post.id === updatedPost.id) ||
-                prev.pinned.find((post) => post.id === updatedPost.id);
+        const authorResponse = await fetch(`http://localhost:3000/api/user/${updatedPost.author}`);
+        const authorData = authorResponse.ok ? await authorResponse.json() : { username: updatedPost.author };
 
+        setCurrentPosts(prev => {
+            const isSavedByUs = updatedPost.saves.includes(username);
+            
             const fullUpdatedPost = {
                 ...updatedPost,
-                author: existingPost ? existingPost.author : updatedPost.author,
+                author: authorData
             };
 
             return {
                 ...prev,
-                created: prev.created.map((post) =>
+                created: prev.created.map(post =>
                     post.id === updatedPost.id ? fullUpdatedPost : post
                 ),
-                pinned: prev.pinned.map((post) =>
+                liked: prev.liked.map(post =>
                     post.id === updatedPost.id ? fullUpdatedPost : post
                 ),
-                saved: updatedPost.saves.includes(currentUsername)
+                saved: isSavedByUs && isOwner
                     ? [fullUpdatedPost, ...prev.saved]
-                    : prev.saved.filter((post) => post.id !== updatedPost.id),
+                    : prev.saved.filter(post => post.id !== updatedPost.id)
             };
         });
     } catch (error) {

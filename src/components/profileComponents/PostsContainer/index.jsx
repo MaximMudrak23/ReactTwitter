@@ -1,7 +1,7 @@
 import './styles.css'
 import { Post } from '../Post';
 
-export function PostsContainer({ userInfo, isOwner, setCurrentPosts, currentPosts, activeFolder}) {
+export function PostsContainer({ isOwner, currentPosts, setCurrentPosts, activeFolder}) {
   const allTargetPosts = currentPosts[activeFolder.value] || [];
 
   const pinnedPosts = allTargetPosts
@@ -19,7 +19,6 @@ export function PostsContainer({ userInfo, isOwner, setCurrentPosts, currentPost
         <Post
           key={post.id}
           postInfo={post}
-          userInfo={userInfo}
           isOwner={isOwner}
           activeFolder={activeFolder}
           setCurrentPosts={setCurrentPosts}

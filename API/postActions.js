@@ -13,27 +13,18 @@ export async function pinPost(postId, isPinned, setCurrentPosts) {
         const updatedPost = await response.json();
 
         setCurrentPosts(prev => {
-            const existingPost = prev.created.find(post => post.id === updatedPost.id) 
-            || prev.pinned.find(post => post.id === updatedPost.id);
-        
+            const existingPost = prev.created.find(post => post.id === updatedPost.id);
+
             const fullUpdatedPost = {
                 ...updatedPost,
                 author: existingPost ? existingPost.author : updatedPost.author
             };
-        
-            const updatedCreated = prev.created.map(post =>
-                post.id === updatedPost.id ? fullUpdatedPost : post
-            );
 
-            let updatedPinned = prev.pinned.filter(post => post.id !== updatedPost.id);
-            if (updatedPost.isPinned) {
-                updatedPinned = [fullUpdatedPost, ...updatedPinned]; 
-            }
-            
             return {
                 ...prev,
-                created: [...updatedCreated], 
-                pinned: [...updatedPinned] 
+                created: prev.created.map(post =>
+                    post.id === updatedPost.id ? fullUpdatedPost : post
+                )
             };
         });
     } catch (error) {
@@ -46,6 +37,7 @@ export async function editPost(postId, currentText, setCurrentPosts) {
     
     if (!newText || newText.trim() === "") {
         deletePost(postId, setCurrentPosts);
+        return;
     }
 
     try {
@@ -62,8 +54,7 @@ export async function editPost(postId, currentText, setCurrentPosts) {
         const updatedPost = await response.json();
 
         setCurrentPosts(prev => {
-            const existingPost = prev.created.find(post => post.id === updatedPost.id) 
-            || prev.pinned.find(post => post.id === updatedPost.id);
+            const existingPost = prev.created.find(post => post.id === updatedPost.id);
 
             const fullUpdatedPost = {
                 ...updatedPost,
@@ -73,9 +64,6 @@ export async function editPost(postId, currentText, setCurrentPosts) {
             return {
                 ...prev,
                 created: prev.created.map(post =>
-                    post.id === updatedPost.id ? fullUpdatedPost : post
-                ),
-                pinned: prev.pinned.map(post =>
                     post.id === updatedPost.id ? fullUpdatedPost : post
                 )
             };
@@ -101,7 +89,6 @@ export async function deletePost(postId, setCurrentPosts) {
         setCurrentPosts(prev => ({
             ...prev,
             created: prev.created.filter(post => post.id !== postId),
-            pinned: prev.pinned.filter(post => post.id !== postId),
             liked: prev.liked.filter(post => post.id !== postId),
             saved: prev.saved.filter(post => post.id !== postId)
         }));
@@ -110,4 +97,3 @@ export async function deletePost(postId, setCurrentPosts) {
         console.error("Ошибка при удалении поста!", error);
     }
 }
-

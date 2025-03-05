@@ -6,8 +6,8 @@ async function isValidVideo(file) {
 
         video.onloadedmetadata = () => {
             URL.revokeObjectURL(video.src);
-            if (video.duration > 120) {
-                reject("Видео не может быть длиннее 120 секунд!");
+            if (video.duration > 300) {
+                reject("Видео не может быть длиннее 300 секунд!");
             } else {
                 resolve(true);
             }
