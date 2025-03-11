@@ -1,4 +1,4 @@
-import './styles.css'
+import './styles.css';
 import { Post } from '../Post';
 
 export function PostsContainer({ isOwner, currentPosts, setCurrentPosts, activeFolder}) {

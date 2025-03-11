@@ -3,7 +3,7 @@ import { ProfilePageHeader } from '../../profileComponents/ProfilePageHeader'
 import { EditProfilePageButtons } from '../EditProfilePageButtons';
 import { EditProfilePageInput } from '../EditProfilePageInput';
 import { EditProfilePageAvatar } from '../EditProfilePageAvatar';
-import { loadUserData } from '../../../../API/loadUserData';
+import { loadUserData } from '../../../../API/GET/loadUserData';
 import { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 

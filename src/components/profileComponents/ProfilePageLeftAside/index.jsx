@@ -5,6 +5,7 @@ import logo from '/twitter-logo.svg';
 import gearLogo from '/gear-icon.svg';
 import movieLogo from '/movie-icon.svg';
 import marketLogo from '/market-icon.svg';
+import exitLogo from '/exit-logo.svg';
 
 export function ProfilePageLeftAside() {
     // Browser Width
@@ -22,9 +23,10 @@ export function ProfilePageLeftAside() {
                 onClick={()=>window.location.href = `/profile/${localStorage.getItem('username')}`}
             > <img src={logo} alt="Twitter Logo" draggable='false' /> </div>
             <nav>
-                <AsideOptions logo={gearLogo} txt={windowWidth > 980 ? 'Настройки' : null} />
-                <AsideOptions logo={movieLogo} txt={windowWidth > 980 ? 'Кинотеатр' : null} />
+                {/* <AsideOptions logo={gearLogo} txt={windowWidth > 980 ? 'Настройки' : null} /> */}
+                {/* <AsideOptions logo={movieLogo} txt={windowWidth > 980 ? 'Кинотеатр' : null} /> */}
                 {/* <AsideOptions logo={marketLogo} txt={windowWidth > 980 ? 'Магазин' : null} /> */}
+                <AsideOptions logo={exitLogo} txt={windowWidth > 980 ? 'Выйти' : null} />
             </nav>
         </aside>
     )

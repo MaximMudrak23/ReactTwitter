@@ -1,7 +1,7 @@
 import './styles.css'
 import { RoundButton } from '../../RoundButton';
-import { handleSubscribe } from '../../../../API/FrontBusinessLogic/handleSubscribe';
-import { handleEditProfile } from '../../../../API/FrontBusinessLogic/handleEditProfile';
+import { handleSubscribe } from '../../../../API/POST/handleSubscribe';
+import { toEditProfilePage } from '../../../../FRONT/toEditProfilePage';
 import { useNavigate } from "react-router-dom";
 import logo from '/twitter-logo.svg';
 import defaultUser from '/defaultUser.svg';
@@ -26,7 +26,7 @@ export function ProfilePageInfo({userInfo, isOwner, setUser}) {
             txtc={'black'}
             isBold='true'
             wdth='140px'
-            onClick={()=>handleEditProfile(userInfo.username, navigate)}
+            onClick={()=>toEditProfilePage(userInfo.username, navigate)}
           />
         </div>}
         {!isOwner && <div className="profile_info_editButton">

@@ -3,7 +3,7 @@ import { FindFolder } from '../FindFolder';
 import { ProfilePageHeader } from '../ProfilePageHeader';
 import { ProfilePageInfo } from '../profilePageInfo';
 import { CategoryAndAddPost } from '../CategoryAndAddPost';
-import { loadUserData } from '../../../../API/loadUserData'
+import { loadUserData } from '../../../../API/GET/loadUserData';
 
 export function ProfilePageMain() {
     const {userInfo, isOwner, setUser} = loadUserData();

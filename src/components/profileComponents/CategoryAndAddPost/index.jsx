@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { CategoryFolder } from '../CategoryFolder'
 import { AddPostFolder } from '../AddPostFolder'
 import { PostsContainer } from '../PostsContainer'
-import { loadPostData } from '../../../../API/postRequests';
+import { loadPostData } from '../../../../API/GET/loadPostData';
 
 export function CategoryAndAddPost({ userInfo, isOwner, setUser }) {
   const [currentPosts, setCurrentPosts] = useState({ created: [], liked: [], saved: [] });

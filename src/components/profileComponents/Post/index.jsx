@@ -1,18 +1,21 @@
 import './styles.css'
 import { useState, useEffect, useRef } from 'react';
-import { pinPost, editPost, deletePost } from '../../../../API/postActions';
-import { toggleLike, toggleSave } from '../../../../API/FrontBusinessLogic/likeAndSaveLogic';
-import pinIcon from '/pin.svg'
-import pinIcon2 from '/pin2.svg'
+import { pinPost } from '../../../../API/PATCH/pinPost';
+import { editPost } from '../../../../API/PATCH/editPost';
+import { deletePost } from '../../../../API/DELETE/deletePost';
+import { toggleLike } from '../../../../API/PATCH/toggleLike';
+import { toggleSave } from '../../../../API/PATCH/toggleSave';
+import pinIcon from '/pin.svg';
+import pinIcon2 from '/pin2.svg';
 import defaultUser from '/defaultUser.svg';
 import logo from '/twitter-logo.svg';
 import checkBadge from '/check-badge.svg';
-import likeLogo from '/like.svg'
-import likeLogoFilled from '/likeFilled.svg'
-import saveLogo from '/save.svg'
-import saveLogoFilled from '/saveFilled.svg'
-import editLogo from '/edit.svg'
-import deleteLogo from '/delete.svg'
+import likeLogo from '/like.svg';
+import likeLogoFilled from '/likeFilled.svg';
+import saveLogo from '/save.svg';
+import saveLogoFilled from '/saveFilled.svg';
+import editLogo from '/edit.svg';
+import deleteLogo from '/delete.svg';
 
 export function Post({ postInfo, isOwner, activeFolder, setCurrentPosts }) {
     const [isOptionVisible,setIsOptionVisible] = useState(false);
@@ -36,12 +39,12 @@ export function Post({ postInfo, isOwner, activeFolder, setCurrentPosts }) {
         
         <div className="postContainer__mainInfo">
             <div className="postContainer__mainInfo__IMG">
-                <img src={postInfo.author.avatar === undefined ? defaultUser : postInfo.author.avatar } alt="Profile Picture" />
+                <img src={postInfo.author.avatar === null ? defaultUser : postInfo.author.avatar } alt="Profile Picture" />
             </div>
             
             <div className="postContainer__mainInfo__name">
                 <div className="postContainer__name">
-                    <span>{postInfo.author.fullname === undefined || postInfo.author.fullname === '' ? 'null' : postInfo.author.fullname}</span>
+                    <span>{postInfo.author.fullname === null || postInfo.author.fullname === '' ? 'null' : postInfo.author.fullname}</span>
                     {postInfo.author.isUserConfirmed ? <img src={checkBadge} alt="Check Badge" /> : null}
                     {postInfo.author.isUserTwitterCreator ? <img src={logo} alt="Twitter Logo" /> : null}
                 </div>

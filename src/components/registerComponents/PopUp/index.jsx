@@ -1,17 +1,17 @@
 import './styles.css'
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { RoundButton } from '../../RoundButton'
 import twitterLogo from '/twitter-logo.svg'
 import openEye from '/eye-open.svg';
 import closedEye from '/eye-closed.svg';
-import {registerSubmit, loginSubmit} from '../../../../API/authRequests'
+import {registerSubmit, loginSubmit} from '../../../../API/POST/authRequests'
 
 function getDaysInMonth(year, month){
   if (!year || !month) return [];
   return Array.from({ length: new Date(year, month, 0).getDate() }, (_, index) => index + 1);
 }
 
-export function getDataInfo(option,info) {
+function getDataInfo(option,info) {
   switch (option) {
     case 'month':
       return ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];

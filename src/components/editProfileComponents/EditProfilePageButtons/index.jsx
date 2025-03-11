@@ -1,9 +1,11 @@
-import './styles.css'
-import { useRef } from 'react'
-import { RoundButton } from '../../RoundButton'
-import { saveFullName } from '../../../../API/saveFullName'
-import { handleAvatarUpload, handleBackgroundUpload } from '../../../../API/FrontBusinessLogic/handleUploads'
-import { handleAvatarDelete, handleBackgroundDelete } from '../../../../API/FrontBusinessLogic/handleDeletes'
+import './styles.css';
+import { useRef } from 'react';
+import { RoundButton } from '../../RoundButton';
+import { saveFullName } from '../../../../API/PATCH/saveFullName';
+import { changeAvatar } from '../../../../API/POST/changeAvatar';
+import { changeBackground } from '../../../../API/POST/changeBackground';
+import { deleteAvatar } from '../../../../API/DELETE/deleteAvatar';
+import { deleteBackground } from '../../../../API/DELETE/deleteBackground';
 
 export function EditProfilePageButtons({userInfo, setUser, userFullName}) {
     const avatarInput = useRef(null);
@@ -16,14 +18,14 @@ export function EditProfilePageButtons({userInfo, setUser, userFullName}) {
             accept='image/png, image/jpg, image/jpeg'
             style={{display: 'none'}}
             ref={avatarInput}
-            onChange={(e)=>handleAvatarUpload(e, userInfo, setUser)}
+            onChange={(e)=>changeAvatar(e, userInfo, setUser)}
         />
         <input
             type="file"
             accept='image/png, image/jpg, image/jpeg, video/mp4, video/wav'
             style={{display: 'none'}}
             ref={backgroundInput}
-            onChange={(e)=>handleBackgroundUpload(e, userInfo, setUser)}
+            onChange={(e)=>changeBackground(e, userInfo, setUser)}
         />
         <div className="profileMain__edit__buttons">
             <RoundButton
@@ -58,7 +60,7 @@ export function EditProfilePageButtons({userInfo, setUser, userFullName}) {
                 bgc={'white'}
                 txtc={'black'}
                 isBold
-                onClick={()=>handleBackgroundDelete(userInfo,setUser)}
+                onClick={()=>deleteBackground(userInfo,setUser)}
             />
             <RoundButton
                 wdth='150px'
@@ -66,7 +68,7 @@ export function EditProfilePageButtons({userInfo, setUser, userFullName}) {
                 bgc={'white'}
                 txtc={'black'}
                 isBold
-                onClick={()=>handleAvatarDelete(userInfo,setUser)}
+                onClick={()=>deleteAvatar(userInfo,setUser)}
             />
         </div>
     </>

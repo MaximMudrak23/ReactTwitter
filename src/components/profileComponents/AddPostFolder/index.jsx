@@ -1,6 +1,6 @@
 import './styles.css'
 import {useState, useEffect, useRef} from 'react';
-import { addPost } from '../../../../API/postRequests';
+import { addPost } from '../../../../API/POST/addPost';
 import sendLogo from '/send.svg';
 
 export function AddPostFolder({userInfo, setUser, setCurrentPosts}) {
