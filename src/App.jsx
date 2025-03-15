@@ -1,8 +1,10 @@
-import './App.css'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { RegistrationPage } from './pages/RegistrationPage'
-import { ProfilePage } from './pages/ProfilePage'
-import { EditProfilePage } from './pages/EditProfilePage'
+import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { RegistrationPage } from './pages/RegistrationPage';
+import { ProfilePage } from './pages/ProfilePage';
+import { EditProfilePage } from './pages/EditProfilePage';
+import { ChatsPage } from './pages/ChatsPage';
+import { ChatPage } from './pages/ChatPage';
 
 export default function App() {
   return (
@@ -11,6 +13,8 @@ export default function App() {
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/profile/:username" element={<ProfilePage />} />
         <Route path="/editprofile/:username" element={<EditProfilePage />} />
+        <Route path="/chats/:username" element={<ChatsPage />} />
+        <Route path="/chat/:chatID" element={<ChatPage />} />
         <Route path="*" element={<Navigate to={'/register'} />} />
       </Routes>
     </Router>

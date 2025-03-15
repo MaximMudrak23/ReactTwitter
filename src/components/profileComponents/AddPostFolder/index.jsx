@@ -6,7 +6,12 @@ import sendLogo from '/send.svg';
 export function AddPostFolder({userInfo, setUser, setCurrentPosts}) {
   const [text,setText] = useState('');
   const textAreaRef = useRef(null);
-  useEffect(()=>{if (textAreaRef.current) { textAreaRef.current.style.height = 'auto'; textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';}}, [text]);
+  useEffect(()=> {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = 'auto';
+      textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
+    }
+  }, [text]);
 
   return (
       <div className={`addPostFolder`}>

@@ -32,6 +32,13 @@ export function ProfilePageInfo({userInfo, isOwner, setUser}) {
         {!isOwner && <div className="profile_info_editButton">
           <RoundButton
             bgc={'white'}
+            txt={"Написать"}
+            txtc={'black'}
+            isBold='true'
+            wdth='140px'
+          />
+          <RoundButton
+            bgc={'white'}
             txt={userInfo.userSubscribers.includes(localStorage.getItem('username')) ? "Отписаться" : "Читать"}
             txtc={'black'}
             isBold='true'

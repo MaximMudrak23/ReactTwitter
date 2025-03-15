@@ -5,7 +5,9 @@ import logo from '/twitter-logo.svg';
 import gearLogo from '/gear-icon.svg';
 import movieLogo from '/movie-icon.svg';
 import marketLogo from '/market-icon.svg';
+import messageLogo from '/message-icon.svg';
 import exitLogo from '/exit-logo.svg';
+import { toRegisterPage } from '../../../../FRONT/toRegisterPage';
 
 export function ProfilePageLeftAside() {
     // Browser Width
@@ -26,7 +28,8 @@ export function ProfilePageLeftAside() {
                 {/* <AsideOptions logo={gearLogo} txt={windowWidth > 980 ? 'Настройки' : null} /> */}
                 {/* <AsideOptions logo={movieLogo} txt={windowWidth > 980 ? 'Кинотеатр' : null} /> */}
                 {/* <AsideOptions logo={marketLogo} txt={windowWidth > 980 ? 'Магазин' : null} /> */}
-                <AsideOptions logo={exitLogo} txt={windowWidth > 980 ? 'Выйти' : null} />
+                <AsideOptions logo={messageLogo} txt={windowWidth > 980 ? 'Сообщения' : null} hght='36px' right='1px' onClick={()=>window.location.href = `/chats/${localStorage.getItem('username')}`} />
+                <AsideOptions logo={exitLogo} txt={windowWidth > 980 ? 'Выйти' : null} onClick={toRegisterPage} />
             </nav>
         </aside>
     )

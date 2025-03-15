@@ -1,0 +1,39 @@
+.zxc {
+    height: 100%;
+    position: relative;
+}
+
+.messagesContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.messagesContainer::-webkit-scrollbar {
+    width: 5px;
+}
+.messagesContainer::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.myMessage, .otherMessage {
+    max-width: 50%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px 0;
+}
+.myMessage {
+    background-color: rgba(135, 116, 225, 1);
+    align-self: flex-end;
+    margin-right: 5px;
+}
+.otherMessage {
+    background-color: rgba(19, 19, 19, 1);
+    align-self: flex-start;
+    margin-left: 5px;
+}

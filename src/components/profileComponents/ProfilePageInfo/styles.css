@@ -25,6 +25,7 @@
     align-items: center;
     justify-content: flex-end;
     padding-right: 2%;
+    gap: 15px;
 }
 .profile_info_name {
     display: flex;
