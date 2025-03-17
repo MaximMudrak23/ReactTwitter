@@ -1,19 +1,19 @@
 import './styles.css';
 import { useEffect, useRef } from "react";
+import { Message } from '../Message';
 
-export function ChatPageMessagesContainer() {
-  const zxcRef = useRef(null);
+export function ChatPageMessagesContainer({chatMessages, interlocutorData}) {
+  const messagesContainerRef = useRef(null);
   useEffect(() => {
-      if (zxcRef.current) {
-        zxcRef.current.scrollTop = zxcRef.current.scrollHeight;
-      }
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
   }, []);
 
   return (
-    <div className="zxc">
-      <div className="messagesContainer" ref={zxcRef}>
-        <div className="otherMessage">Здарова</div>
-        <div className="myMessage">Пример уже моего большого месседжа которое помещается в несколько строк</div>
+    <div className="relativeMessagesContainer">
+      <div className="messagesContainer" ref={messagesContainerRef}>
+        {chatMessages && chatMessages.length > 0 ? chatMessages.map((m,i) => <Message messageAuthor={m.author} messageText={m.text} key={i} />)  : <p>Нет сообщений</p>}
       </div>
     </div>
   )

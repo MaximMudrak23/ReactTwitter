@@ -1,4 +1,4 @@
-.zxc {
+.relativeMessagesContainer {
     height: 100%;
     position: relative;
 }
@@ -19,21 +19,4 @@
 .messagesContainer::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-}
-
-.myMessage, .otherMessage {
-    max-width: 50%;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 5px 0;
-}
-.myMessage {
-    background-color: rgba(135, 116, 225, 1);
-    align-self: flex-end;
-    margin-right: 5px;
-}
-.otherMessage {
-    background-color: rgba(19, 19, 19, 1);
-    align-self: flex-start;
-    margin-left: 5px;
 }

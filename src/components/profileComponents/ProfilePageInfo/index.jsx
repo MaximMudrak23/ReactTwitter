@@ -1,6 +1,7 @@
 import './styles.css'
 import { RoundButton } from '../../RoundButton';
 import { handleSubscribe } from '../../../../API/POST/handleSubscribe';
+import { openChat } from '../../../../API/POST/openChat';
 import { toEditProfilePage } from '../../../../FRONT/toEditProfilePage';
 import { useNavigate } from "react-router-dom";
 import logo from '/twitter-logo.svg';
@@ -36,6 +37,7 @@ export function ProfilePageInfo({userInfo, isOwner, setUser}) {
             txtc={'black'}
             isBold='true'
             wdth='140px'
+            onClick={()=>{openChat(localStorage.getItem('username'), userInfo.username, navigate)}}
           />
           <RoundButton
             bgc={'white'}

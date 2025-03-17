@@ -15,11 +15,9 @@ export async function addPost(text, username, setUser, setCurrentPosts) {
 
         const newPost = await response.json();
 
-        // **Делаем запрос на сервер, чтобы подтянуть автора**
         const authorResponse = await fetch(`http://localhost:3000/api/user/${username}`);
         const authorData = authorResponse.ok ? await authorResponse.json() : { username };
 
-        // **Добавляем автора в новый пост**
         const fullNewPost = {
             ...newPost,
             author: authorData
