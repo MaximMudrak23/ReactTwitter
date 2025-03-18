@@ -70,7 +70,14 @@
 .profile_info_subs p {
     color: rgba(100, 104, 109, 1);
 }
+.profile_info_subs p:hover {
+    cursor: pointer;
+    color: rgba(100, 104, 109, 0.6);
+}
 .profile_info_subs span {
     color: white;
     font-weight: bold;
+}
+.profile_info_subs p:hover span {
+    color: rgba(100, 104, 109, 0.6);
 }

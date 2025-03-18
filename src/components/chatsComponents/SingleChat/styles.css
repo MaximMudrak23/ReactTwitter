@@ -25,6 +25,12 @@
 }
 .chat__username {
     font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.chat__username img {
+    height: 1.2rem;
+    object-fit: contain;
 }
 .chat__username, .chat__message {
     width: 100%;

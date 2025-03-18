@@ -1,17 +1,30 @@
 import './styles.css'
 import { RoundButton } from '../../RoundButton';
+import { PopUpSubs } from '../PopUpSubs';
 import { handleSubscribe } from '../../../../API/POST/handleSubscribe';
 import { openChat } from '../../../../API/POST/openChat';
 import { toEditProfilePage } from '../../../../FRONT/toEditProfilePage';
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 import logo from '/twitter-logo.svg';
 import defaultUser from '/defaultUser.svg';
 import checkBadge from '/check-badge.svg';
 import calendar from '/calendar.svg';
 
 export function ProfilePageInfo({userInfo, isOwner, setUser}) {
-    const navigate = useNavigate();
-    return (
+  const [isSubscribersOpen,setIsSubscribersOpen] = useState(false);
+  const [isSubscribtionsOpen,setIsSubscribtionsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  return (
+    <>
+      {(isSubscribersOpen || isSubscribtionsOpen) &&
+      <PopUpSubs
+        isSubscribersOpen={isSubscribersOpen}
+        isSubscribtionsOpen={isSubscribtionsOpen}
+        setIsSubscribersOpen={setIsSubscribersOpen}
+        setIsSubscribtionsOpen={setIsSubscribtionsOpen}
+      />}
       <div className="profile_info">
         <div className="profile_info_IMG">
           <img
@@ -61,9 +74,10 @@ export function ProfilePageInfo({userInfo, isOwner, setUser}) {
           <img src={calendar} alt="Calendar" /><span>Регистрация: {userInfo.regDate} г.</span>
         </div>
         <div className="profile_info_subs">
-          <p><span>{userInfo.userSubscribtions.length}</span> в читаемых</p>
-          <p><span>{userInfo.userSubscribers.length}</span> читателей</p>
+          <p onClick={()=>{setIsSubscribtionsOpen(true)}}><span>{userInfo.userSubscribtions.length}</span> в читаемых</p>
+          <p onClick={()=>{setIsSubscribersOpen(true)}}><span>{userInfo.userSubscribers.length}</span> читателей</p>
         </div>
       </div>
-    )
+    </>
+  )
 }
