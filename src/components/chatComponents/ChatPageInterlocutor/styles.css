@@ -14,6 +14,7 @@
     border-radius: 9999px;
     grid-column: 1 / 2;
     grid-row: 1 / 3;
+    object-fit: cover;
 }
 .interlocutorInfo__fullname {
     grid-column: 2 / 3;

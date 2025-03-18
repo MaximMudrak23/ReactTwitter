@@ -1,3 +1,5 @@
+import socket from '../websocket';
+
 export async function sendMessage(text, chatID, setChatMessages) {
     if (!text.trim()) return;
 
@@ -15,8 +17,10 @@ export async function sendMessage(text, chatID, setChatMessages) {
         });
         if (!response.ok) throw new Error('Ошибка отправки сообщения');
         const newMessage = await response.json();
-        setChatMessages(prev => [...prev, newMessage]);
+
+        socket.emit('sendMessage', { ...newMessage, chatID });
     } catch (error) {
+        alert('Ошибка отправки сообщения');
         console.error('Ошибка отправки сообщения:', error);
     }
 }
