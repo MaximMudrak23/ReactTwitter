@@ -1,4 +1,4 @@
-export async function findFolder(targetUser) {
+export async function findFolderFind(targetUser) {
     if (!targetUser) return;
 
     try {

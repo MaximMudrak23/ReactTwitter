@@ -26,6 +26,7 @@
 
 .chatPageActions {
     width: 10%;
+    min-width: 60px;
     height: 100%;
     display: flex;
     flex-direction: column;

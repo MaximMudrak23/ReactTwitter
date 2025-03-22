@@ -3,7 +3,7 @@
     height: 65px;
     border-bottom: 1px solid rgb(47, 51, 54);
     display: grid;
-    grid-template-columns: 10% 1fr;
+    grid-template-columns: 60px 1fr;
     grid-template-rows: 1fr auto;
     place-items: center;
 }
